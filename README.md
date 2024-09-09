@@ -14,7 +14,7 @@ Node.js v20+ e Yarn
 Configuração do Keycloak com Docker
 Crie um arquivo docker-compose.yml na raiz do projeto:
 
-/code:
+``` 
 
 version: "3.8"
 services:
@@ -27,10 +27,13 @@ services:
       - "8080:8080"
     command: start-dev
 
+``` 
 Execute o comando para iniciar o Keycloak:
-/code:
 
+``` 
 docker-compose up -d
+
+``` 
 
 Acesse o Keycloak na URL http://localhost:8080 e faça login com as credenciais admin/admin.
 
@@ -47,16 +50,19 @@ Gere um Client Secret na aba Credentials e salve-o para as variáveis de ambient
 ##Configuração do Next.js##
 #Variáveis de Ambiente#
 Crie um arquivo .env.local na raiz do projeto e adicione as seguintes variáveis:
-/code:
+
+``` 
 
 AUTH_KEYCLOAK_ID=nextjs-realm-client
 AUTH_KEYCLOAK_SECRET=<client-secret>
 AUTH_KEYCLOAK_ISSUER=http://localhost:8080/realms/nextjs-realm
+```
 
 Estrutura de Arquivos
 src/app/api/auth/[...nextauth]/route.ts:
 
-/code:
+```
+
 import { handlers } from "@/auth";
 
 export const { GET, POST } = handlers;
@@ -75,7 +81,7 @@ export const { handlers } = NextAuth({
   ],
 });
 
-
+``` 
 Aqui está um README resumido para o seu projeto baseado nas instruções fornecidas. Ele inclui a configuração do ambiente com Docker, variáveis de ambiente e o uso do Keycloak e NextAuth.
 
 Next.js Keycloak Integration
